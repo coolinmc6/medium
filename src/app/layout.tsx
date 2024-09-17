@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Header from '@/app/components/Header'
 
 export const metadata: Metadata = {
-  title: "Code",
+  title: "Medium | @coolinmc6",
   description: "Code for Medium by Colin",
 };
 
@@ -16,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Header />
+        <main className="h-full">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
