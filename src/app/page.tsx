@@ -1,14 +1,31 @@
+import { FaSquareGithub } from "react-icons/fa6";
+import { IoLogoVercel } from "react-icons/io5";
+import Link from "next/link";
+import Tile from "@/app/components/home-page/Tile"
+
 export default function Home() {
-  // const style = {
-  //   background: 'radial-gradient(circle, #0984e3 0, #fd79a8 100%)',
-  //   filter: 'blur(40px)',
-  //   height: '50px', 
-  //   // opacity: 0.5
-  // }
-  const style = {}
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-2">
+      <Tile className="relative">
+        <h2 className="text-4xl mb-6">
+          Welcome to My Portfolio
+        </h2>
+        <p className="mb-4">
+          This is the home for all the code and projects featured in my Medium articles.
+          Thank you for visiting, and I hope you find something helpful!
+        </p>
+        <div className="mt-10">
+          <Link href="https://github.com/coolinmc6/medium" className="flex gap-2 align-middle mb-4">
+            <FaSquareGithub className="text-4xl" />
+            <span className="text-lg pt-1">coolinmc6/medium (this repo)</span>
+          </Link>
+          <Link href="https://medium-one-alpha.vercel.app/" className="flex gap-2 align-middle">
+            <IoLogoVercel className="text-4xl"/>
+            <span className="text-lg pt-1">Live Demo on Vercel</span>
+          </Link>
+        </div>
+      </Tile>  
     </div>
   );
 }
+
