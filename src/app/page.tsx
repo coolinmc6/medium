@@ -7,14 +7,14 @@ export default function Home() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-2">
       <Tile className="relative">
-        <h2 className="text-4xl mb-6">
+        <Tile.Title>
           Welcome to My Portfolio
-        </h2>
-        <p className="mb-4">
+        </Tile.Title>
+        <Tile.Body className="mb-4">
           This is the home for all the code and projects featured in my Medium articles.
           Thank you for visiting, and I hope you find something helpful!
-        </p>
-        <div className="mt-10">
+        </Tile.Body>
+        <Tile.Body className="mt-10">
           <Link href="https://github.com/coolinmc6/medium" className="flex gap-2 align-middle mb-4">
             <FaSquareGithub className="text-4xl" />
             <span className="text-lg pt-1">coolinmc6/medium (this repo)</span>
@@ -23,8 +23,17 @@ export default function Home() {
             <IoLogoVercel className="text-4xl"/>
             <span className="text-lg pt-1">Live Demo on Vercel</span>
           </Link>
-        </div>
-      </Tile>  
+        </Tile.Body>
+      </Tile>
+      <Tile className="relative">
+        <Tile.Title>Game</Tile.Title>
+        <Tile.Body>Brief introduction to useContext and useReducer</Tile.Body>
+        <Tile.Body>
+          <Link href="/article-001-game" className="text-lg underline">
+            See the page
+          </Link>
+        </Tile.Body>
+      </Tile>
     </div>
   );
 }

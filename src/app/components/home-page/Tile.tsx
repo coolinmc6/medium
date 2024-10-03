@@ -14,3 +14,22 @@ const Tile = ({ children, className }: TileProps) => {
 }
 
 export default Tile
+
+const Title = ({ children, className }: TileProps) => {
+  return (
+    <h2 className={clsx("text-4xl mb-6", className)}>
+      {children}
+    </h2>
+  )
+}
+
+const Body = ({ children, className }: TileProps) => {
+  return (
+    <div className={clsx("", className)}>
+      {children}
+    </div>
+  )
+}
+
+Tile.Title = Title
+Tile.Body = Body
