@@ -1,12 +1,17 @@
 "use client"
 
-import { createGame } from "./gameHelpers"
+import { useReducer, useEffect } from "react"
+import { reducer, initialState } from "./game-reducer"
 
 export default function Game() {
-  const game = createGame()
+  const [game, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    dispatch({ type: 'NEW_GAME', payload: null })
+  }, [])
 
   const handleNewGame = () => {
-    console.log('new game!')
+    dispatch({ type: 'NEW_GAME', payload: null })
   }
   return (
     <div className="p-4 bg-white flex-grow">
@@ -29,11 +34,18 @@ export default function Game() {
         <div className="w-full md:w-2/3">
           <div className="mb-4 mt-4">  
             <div className="flex justify-around mb-4">
-                {game.board.map((hexColor) => {
-                  return <div key={hexColor} className={'w-16 h-16 rounded-full'} style={{ backgroundColor: hexColor}}  />
-                })}
-              </div>
+              {game.board.map((hexColor) => {
+                return <div key={hexColor} className={'w-16 h-16 rounded-full'} style={{ backgroundColor: hexColor}}  />
+              })}
             </div>
+            <h3 className="text-xl">Answers - REMOVE LATER</h3>
+            <div className="flex justify-around mb-4">
+              {game.answers.map((hexColor) => {
+                return <div key={hexColor} className={'w-16 h-16 rounded-full'} style={{ backgroundColor: hexColor}}  />
+              })}
+            </div>
+          </div>
+            
         </div>
       </div>
     </div>
