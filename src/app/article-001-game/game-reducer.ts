@@ -1,6 +1,6 @@
 import { createGame, getNumberCorrect } from "./gameHelpers"
 
-type GameState = {
+export type GameState = {
   activeHex: string | null // the index of the active hex
   board: string[]   // player's active board and what they'll see
   answers: string[] // the answers
