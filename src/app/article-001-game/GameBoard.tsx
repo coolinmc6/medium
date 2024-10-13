@@ -12,7 +12,7 @@ export const GameBoard = ({ game, handleMoveColor }: GameBoardProps) => {
       <div className="mb-4 mt-4">  
         <div className="flex justify-around mb-4">
           {game.board.map((hexColor) => {
-            return <GameCircle key={hexColor} handleMoveColor={handleMoveColor} hexColor={hexColor} />
+            return <GameCircle key={hexColor} handleMoveColor={handleMoveColor} hexColor={hexColor} isActive={game.activeHex === hexColor} />
           })}
         </div>
       </div>
