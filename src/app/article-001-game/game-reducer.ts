@@ -8,7 +8,7 @@ export type GameState = {
   correct: number   // how many correct
 }
 
-type GameAction = {
+export type GameAction = {
   type: 'NEW_GAME' | 'MOVE_COLOR'
   payload: any
 }

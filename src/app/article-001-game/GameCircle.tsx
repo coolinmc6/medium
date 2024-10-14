@@ -1,12 +1,16 @@
+import { useContext } from "react"
+import { GameDispatchContext } from "./game-context"
+
 type GameCircleProps = {
   hexColor: string
-  handleMoveColor: (hexColor: string) => void
   isActive: boolean
 }
 
-export const GameCircle = ({ hexColor, handleMoveColor, isActive }: GameCircleProps) => {
+export const GameCircle = ({ hexColor, isActive }: GameCircleProps) => {
+  const dispatch = useContext(GameDispatchContext)
+  
   const handleClick = () => {
-    handleMoveColor(hexColor)
+    dispatch({ type: 'MOVE_COLOR', payload: hexColor })
   }
 
   const style = {

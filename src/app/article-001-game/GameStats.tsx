@@ -1,11 +1,15 @@
-import { type GameState } from "./game-reducer"
+import { useContext } from "react"
+import { GameStateContext, GameDispatchContext } from "./game-context"
 
-type GameStatsProps = {
-  game: GameState
-  handleNewGame: () => void
-}
 
-export const GameStats = ({ game, handleNewGame }: GameStatsProps) => {
+export const GameStats = () => {
+  const game = useContext(GameStateContext)
+  const dispatch = useContext(GameDispatchContext)
+
+  const handleNewGame = () => {
+    dispatch({ type: 'NEW_GAME', payload: null })
+  }
+
   return (
     <div className="w-full md:w-1/3 flex-row md:flex-col">
       <div className="text-center">

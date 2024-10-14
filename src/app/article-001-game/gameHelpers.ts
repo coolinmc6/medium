@@ -14,14 +14,14 @@ export const shuffle = (array: any[]) => {
   return array;
 }
 
-const compareBoards = (arr1: any[], arr2: any[]) => {
+const compareBoards = (arr1: string[], arr2: string[]) => {
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] !== arr2[i]) return false;
   }
   return true;
 }
 
-export const getNumberCorrect = (arr1: any[], arr2: any[]) => {
+export const getNumberCorrect = (arr1: string[], arr2: string[]) => {
   let count = 0;
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === arr2[i]) count++;
