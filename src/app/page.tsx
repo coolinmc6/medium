@@ -26,11 +26,21 @@ export default function Home() {
         </Tile.Body>
       </Tile>
       <Tile className="relative">
-        <Tile.Title>Game</Tile.Title>
-        <Tile.Body>Brief introduction to useContext and useReducer</Tile.Body>
-        <Tile.Body>
+        <Tile.Title>A Practical Guide to useContext and useReducer in React and TypeScript</Tile.Title>
+        <Tile.Body>Build a type-safe React game using useContext and useReducer with TypeScript.</Tile.Body>
+        <Tile.Body className="mt-2">
+          <Link href="https://medium.com/@coolinmc6/a-practical-guide-to-usecontext-and-usereducer-in-react-and-typescript-303ee3fc0423" className="text-lg underline">
+            See the article
+          </Link>
+        </Tile.Body>
+        <Tile.Body className="m2-2">
+          <Link href="https://github.com/coolinmc6/medium/tree/article-001-context-integration-end" className="text-lg underline">
+            See the code
+          </Link>
+        </Tile.Body>
+        <Tile.Body className="m2-2">
           <Link href="/article-001-game" className="text-lg underline">
-            See the page
+            See the final product
           </Link>
         </Tile.Body>
       </Tile>
