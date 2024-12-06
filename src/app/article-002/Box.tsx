@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { GiLockedChest, GiOpenChest } from "react-icons/gi";
 
 type BoxProps = {

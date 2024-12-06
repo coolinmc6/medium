@@ -2,20 +2,14 @@
 
 import { useState } from "react";
 
-import { Room, runIterations } from "@/app/article-002/prisoners-dilemma";
+import { Room, runIterations } from "@/app/article-002/prisoners-problem";
 import { Box } from "@/app/article-002/Box";
 
 export default function ArticleTwo() {
-  const [room, setRoom] = useState(() => new Room(100));
-  const [boolArray, setBoolArray] = useState<boolean[]>(
-    Array(length).fill(false)
-  );
+  const [room] = useState(() => new Room(100));
+  const [boolArray, setBoolArray] = useState<boolean[]>(Array(100).fill(false));
 
   const toggleValue = (index: number) => {
-    console.log(index);
-    // setBoolArray((prev) =>
-    //   prev.map((value, i) => (i === index ? !value : value))
-    // );
     const newArray = [...boolArray];
     newArray[index] = !newArray[index];
     setBoolArray(newArray);
