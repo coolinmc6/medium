@@ -4,8 +4,9 @@ import { useAdventOfCodeData } from "@/app/hooks/useAdventOfCodeData";
 import {
   parseData,
   groupByColumns,
-  getSimilarities,
+  getSimilarityScore,
 } from "@/app/util/aoc-functions";
+import { DayWrapper } from "@/ui/aoc-components/DayWrapper";
 
 export const AOC2024Day01 = () => {
   // https://adventofcode.com/2024/day/1
@@ -24,20 +25,31 @@ export const AOC2024Day01 = () => {
     column.sort()
   );
 
-  console.log(column1, column2);
-
+  // Part 1
   const differences = column1
     .map((value, index) => {
       return Math.abs(value - column2[index]);
     })
     .reduce((acc, value) => acc + value, 0);
 
-  const sim1 = getSimilarities(column1, column2);
-  const sim2 = getSimilarities(column2, column1);
+  // Part 2
+  const similarityScore1 = getSimilarityScore(column1, column2);
+  const similarityScore2 = getSimilarityScore(column2, column1);
 
-  console.log({ sim1, sim2 });
-
-  // next step: get the similarity scores between each list
-
-  return <div>{differences}</div>;
+  return (
+    <DayWrapper day={1} year={2024}>
+      <div>
+        <section className="mb-2">
+          <h3 className="text-xl">Part 1</h3>
+          <p>Differences between columns: {differences}</p>
+        </section>
+        <section className="mb-2">
+          <h3 className="text-xl">Part 2</h3>
+          <p>
+            Similarity scores: {similarityScore1}, {similarityScore2}
+          </p>
+        </section>
+      </div>
+    </DayWrapper>
+  );
 };

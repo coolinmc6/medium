@@ -1,14 +1,9 @@
 export const parseData = (data: string) => {
-  // Split the data into rows
   const rows = data.trim().split("\n");
 
-  // Parse each row
-  const parsedRows = rows.map((row, index) => {
+  const parsedRows = rows.map((row) => {
     const numbers = row.trim().split(/\s+/).map(Number);
 
-    if (index === 0) {
-      console.log(row, numbers);
-    }
     return numbers;
   });
 
@@ -16,14 +11,12 @@ export const parseData = (data: string) => {
 };
 
 export const groupByColumns = (parsedRows: number[][]): number[][] => {
-  if (!parsedRows.length) return []; // Handle empty input
+  if (!parsedRows.length) return [];
 
-  const numberOfColumns = parsedRows[0].length; // Assuming all rows have the same length
+  const numberOfColumns = parsedRows[0].length;
 
-  // Create an array of empty arrays for each column
   const columns: number[][] = Array.from({ length: numberOfColumns }, () => []);
 
-  // Populate each column
   parsedRows.forEach((row) => {
     row.forEach((num, colIndex) => {
       columns[colIndex].push(num);
@@ -33,22 +26,37 @@ export const groupByColumns = (parsedRows: number[][]): number[][] => {
   return columns;
 };
 
-export const getSimilarities = (
-  baseColumn: number[],
-  compareColumn: number[]
-): Record<number, number> => {
-  // Use a Record<number, number> for the map to ensure type safety
-  const map: Record<number, number> = {};
+/**
+ *
+ * @param arr array of numbers
+ * @returns
+ */
+export const frequencyCounter = (arr: number[]): Map<number, number> => {
+  const frequencyMap = new Map();
+  for (const num of arr) {
+    frequencyMap.set(num, (frequencyMap.get(num) || 0) + 1);
+  }
+  return frequencyMap;
+};
 
-  baseColumn.forEach((value) => {
-    if (map[value] === undefined) {
-      // Use reduce for more efficient counting
-      map[value] = compareColumn.reduce(
-        (count, compareValue) => (compareValue === value ? count + 1 : count),
-        0
-      );
-    }
-  });
+/**
+ *
+ * @param column1
+ * @param column2
+ * @returns similarity score
+ *
+ * The similarity score is calculated for each column. The similarity score for a number
+ * is calculated by multiplying that number by the number of times it appears in the other column.
+ * The total similarity score is the sum of all the similarity scores.
+ */
+export const getSimilarityScore = (
+  column1: number[],
+  column2: number[]
+): number => {
+  const similarityScore = column1.reduce((acc, value) => {
+    const count = column2.filter((val) => val === value).length;
+    return acc + value * count;
+  }, 0);
 
-  return map;
+  return similarityScore;
 };
