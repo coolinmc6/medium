@@ -1,10 +1,14 @@
 import { AOC2024Day01 } from "@/app/advent-of-code/2024/AOC2024Day01";
+import { AOC2024Day02 } from "@/app/advent-of-code/2024/AOC2024Day02";
 
 export default function AdventOfCode2024() {
   return (
     <div className="p-4 bg-white flex-grow">
-      <h1 className="text-3xl text-center mb-2">Advent of Code 2024</h1>
-      <AOC2024Day01 />
+      <div className="flex flex-col gap-y-3">
+        <h1 className="text-3xl text-center mb-2">Advent of Code 2024</h1>
+        <AOC2024Day01 />
+        <AOC2024Day02 />
+      </div>
     </div>
   );
 }
