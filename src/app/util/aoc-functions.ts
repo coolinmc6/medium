@@ -141,3 +141,96 @@ export const isRowSafeWithDampener = (row: number[]): boolean => {
   }
   return isSafe;
 };
+
+/**
+ *
+ * @param data string that your parsing
+ * @param regex Regular Expression to search for
+ * @returns array of string that match the regex pattern
+ */
+export const parseRegex = (data: string, regex: RegExp): string[] => {
+  const matches = Array.from(data.matchAll(regex));
+  return matches.map((match) => match[0]);
+};
+
+/**
+ *
+ * @param data txt file data
+ * @returns array of strings that match the pattern `mul(X,Y)` where X and Y are 1-3 digit numbers
+ *
+ * Day 3
+ * Note: this can be refactored so that we include the regex pattern as an argument
+ */
+export const parseMulString = (data: string): string[] => {
+  const regex = /mul\((\d{1,3}),(\d{1,3})\)/g;
+
+  return parseRegex(data, regex);
+};
+
+/**
+ *
+ * @param data string
+ * @returns array of strings that match the pattern `mul(X,Y)` or `do()` or `don't()`
+ */
+export const parseMulDoDontString = (data: string): string[] => {
+  const regex = /mul\(\d{1,3},\d{1,3}\)|do\(\)|don't\(\)/g;
+
+  return parseRegex(data, regex);
+};
+
+/**
+ *
+ * @param mulStrings array of strings that match the pattern `mul(X,Y)`
+ * @returns product of all the numbers
+ */
+export const multiplyMulNumbers = (mulStrings: string[]): number => {
+  const regex = /mul\((\d{1,3}),(\d{1,3})\)/;
+  return mulStrings
+    .map((mulString) => {
+      const match = mulString.match(regex);
+
+      if (match) {
+        const num1 = parseInt(match[1], 10);
+        const num2 = parseInt(match[2], 10);
+
+        const product = num1 * num2;
+        return product;
+      }
+
+      throw new Error(`Invalid mul string: ${mulString}`); // Handle unexpected cases
+    })
+    .reduce((acc, value) => acc + value, 0); // Sum the results
+};
+
+/**
+ *
+ * @param mulStrings array of strings that match the pattern `mul(X,Y)` or `do()` or `don't()`
+ * @returns product of all the numbers that are enabled
+ */
+export const multiplyEnabledNumbers = (mulStrings: string[]): number => {
+  let enabled = true;
+  let total = 0;
+
+  mulStrings.forEach((mulString) => {
+    if (mulString === "do()") {
+      enabled = true;
+    } else if (mulString === "don't()") {
+      enabled = false;
+    } else {
+      if (enabled) {
+        const regex = /mul\((\d{1,3}),(\d{1,3})\)/;
+        const match = mulString.match(regex);
+
+        if (match) {
+          const num1 = parseInt(match[1], 10);
+          const num2 = parseInt(match[2], 10);
+
+          const product = num1 * num2;
+          total += product;
+        }
+      }
+    }
+  });
+
+  return total;
+};
