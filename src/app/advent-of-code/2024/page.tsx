@@ -1,3 +1,5 @@
+"use client";
+
 import { AOC2024Day01 } from "@/app/advent-of-code/2024/AOC2024Day01";
 import { AOC2024Day02 } from "@/app/advent-of-code/2024/AOC2024Day02";
 import { AOC2024Day03 } from "@/app/advent-of-code/2024/AOC2024Day03";
