@@ -20,7 +20,9 @@ export const parseData = (data: string) => {
 /**
  *
  * @param parsedRows array of number arrays
- * @returns essentially transposes the data - if the data has 3 columns
+ * @returns array of number arrays
+ *
+ * essentially transposes the data - if the data has 3 columns
  * and 100 rows, this function will return 3 arrays of 100 numbers each.
  */
 export const groupByColumns = (parsedRows: number[][]): number[][] => {
@@ -54,9 +56,9 @@ export const frequencyCounter = (arr: number[]): Map<number, number> => {
 
 /**
  *
- * @param column1
- * @param column2
- * @returns similarity score
+ * @param column1 array of numbers
+ * @param column2 array of numbers
+ * @returns number - the similarity score
  *
  * The similarity score is calculated for each column. The similarity score for a number
  * is calculated by multiplying that number by the number of times it appears in the other column.
