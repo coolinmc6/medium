@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useAdventOfCodeData } from "@/app/hooks/useAdventOfCodeData";
+import { useAdventOfCodeData } from '@/app/hooks/useAdventOfCodeData';
 import {
   parseData,
   groupByColumns,
   getSimilarityScore,
-} from "@/app/util/aoc-functions";
-import { DayWrapper } from "@/ui/aoc-components/DayWrapper";
+} from '@/app/util/aoc-functions';
+import { DayWrapper } from '@/ui/aoc-components/DayWrapper';
 
 // https://adventofcode.com/2024/day/1
 export const AOC2024Day01 = () => {

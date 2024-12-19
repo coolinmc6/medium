@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Link from "next/link";
-import Tile from "@/app/components/home-page/Tile";
-import { portfolioTiles } from "@/app/util/constants";
-import clsx from "clsx";
+import Link from 'next/link';
+import Tile from '@/app/components/home-page/Tile';
+import { portfolioTiles } from '@/app/util/constants';
+import clsx from 'clsx';
 
 export default function Home() {
   return (
@@ -14,19 +14,19 @@ export default function Home() {
             <Tile key={index} className="relative">
               <Tile.Title>{tile.title}</Tile.Title>
               {tile.body.map((body, index) => (
-                <Tile.Body className="mb-4" key={index}>
+                <Tile.Body key={index} className="mb-4">
                   {body}
                 </Tile.Body>
               ))}
               <Tile.Body className="mt-10">
                 {tile.links.map((link, index) => (
                   <Link
-                    href={link.href}
+                    key={index}
                     className={clsx(
-                      "flex gap-2 align-middle mb-4",
+                      'flex gap-2 align-middle mb-4',
                       link.className
                     )}
-                    key={index}
+                    href={link.href}
                   >
                     {link.icon ? link.icon : null}
                     <span className="text-lg pt-1">{link.text}</span>

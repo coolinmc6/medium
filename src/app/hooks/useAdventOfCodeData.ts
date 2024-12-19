@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
+import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
 
 export const useAdventOfCodeData = (year: number, day: number) => {
-  const [data, setData] = useState<string>("");
+  const [data, setData] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -15,7 +15,7 @@ export const useAdventOfCodeData = (year: number, day: number) => {
       setData(response.data);
     } catch (err: unknown) {
       setError(`Failed to fetch data for year ${year}, day ${day}`);
-      setData("");
+      setData('');
     } finally {
       setLoading(false);
     }

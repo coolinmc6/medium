@@ -1,4 +1,4 @@
-import { GiLockedChest, GiOpenChest } from "react-icons/gi";
+import { GiLockedChest, GiOpenChest } from 'react-icons/gi';
 
 type BoxProps = {
   contents: number;
@@ -11,7 +11,14 @@ export const Box = ({ number, contents, open, onClick }: BoxProps) => {
   return (
     <div
       className="text-[40px] flex flex-col items-center relative text-center p-4 text-amber-500 cursor-pointer select-none"
+      role="button"
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          onClick();
+        }
+      }}
     >
       {open ? <GiOpenChest /> : <GiLockedChest />}
       <div className="text-1xl text-black">{number}</div>
