@@ -82,7 +82,7 @@ export const portfolioTiles: PortfolioTile[] = [
   {
     title: 'Advent of Code 2024: Project Setup and Day 1',
     body: [
-      'Start the Advent of Code 2024 Challenges with a React-TypeScript project and tackle Day 1’s challenges',
+      "Start the Advent of Code 2024 Challenges with a React-TypeScript project and tackle Day 1's challenges",
     ],
     visible: true,
     links: [

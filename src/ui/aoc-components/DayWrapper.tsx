@@ -9,10 +9,9 @@ type DayWrapperProps = {
 
 export const DayWrapper = ({ children, day, year }: DayWrapperProps) => {
   const links = getLinks(year, day);
-  console.log(links);
   return (
-    <div className="p-4 border-2 border-gray-200 rounded-lg my-4">
-      <h2 className="text-2xl bold mb-4">
+    <div className="p-4 border-2 border-gray-200 rounded-lg my-4 bg-white max-w-4xl w-full">
+      <h2 className="text-2xl font-bold mb-4">
         {year} - Day {day}
       </h2>
       {children}
