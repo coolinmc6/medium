@@ -1,7 +1,6 @@
-import type { PropsWithChildren } from "react";
-import { getLinks } from "@/app/util/aoc-helpers";
-import { SiAdventofcode } from "react-icons/si";
-import Link from "next/link";
+import type { PropsWithChildren } from 'react';
+import { getLinks } from '@/app/util/aoc-helpers';
+import Link from 'next/link';
 
 type DayWrapperProps = {
   day: number;
@@ -19,26 +18,26 @@ export const DayWrapper = ({ children, day, year }: DayWrapperProps) => {
       {children}
       <div className="mt-4 flex flex-col">
         <Link
-          href={links.officialUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           className="text-sm underline"
+          href={links.officialUrl}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           View Day {day} Challenge on Advent of Code
         </Link>
         <Link
-          href={links.officialInputDataUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           className="text-sm underline"
+          href={links.officialInputDataUrl}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           View Day {day} Data on Advent of Code (Yours)
         </Link>
         <Link
-          href={links.repoInputDataUrl}
-          target="_blank"
-          rel="noopener noreferrer"
           className="text-sm underline"
+          href={links.repoInputDataUrl}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           View Day {day} Data for this Repo (Mine)
         </Link>

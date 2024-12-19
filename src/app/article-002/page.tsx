@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { Room, runIterations } from "@/app/article-002/prisoners-problem";
-import { Box } from "@/app/article-002/Box";
+import { Room, runIterations } from '@/app/article-002/prisoners-problem';
+import { Box } from '@/app/article-002/Box';
 
 export default function ArticleTwo() {
   const [room] = useState(() => new Room(100));
@@ -26,8 +26,8 @@ export default function ArticleTwo() {
         {room.boxes.map((number, index) => (
           <Box
             key={index + 1}
-            number={index + 1}
             contents={number}
+            number={index + 1}
             open={boolArray[index]}
             onClick={() => toggleValue(index)}
           />

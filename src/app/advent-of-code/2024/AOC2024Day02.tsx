@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useAdventOfCodeData } from "@/app/hooks/useAdventOfCodeData";
-import { DayWrapper } from "@/ui/aoc-components/DayWrapper";
+import { useAdventOfCodeData } from '@/app/hooks/useAdventOfCodeData';
+import { DayWrapper } from '@/ui/aoc-components/DayWrapper';
 import {
   parseData,
   isRowSafe,
   isRowSafeWithDampener,
-} from "@/app/util/aoc-functions";
+} from '@/app/util/aoc-functions';
 
 export const AOC2024Day02 = () => {
   const { data, loading, error } = useAdventOfCodeData(2024, 2);

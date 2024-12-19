@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import { GameStats } from "./GameStats"
-import { GameBoard } from "./GameBoard"
-import { GameStateWrapper } from "./GameStateWrapper"
+import { GameStats } from './GameStats';
+import { GameBoard } from './GameBoard';
+import { GameStateWrapper } from './GameStateWrapper';
 
 export default function Game() {
   return (
@@ -15,5 +15,5 @@ export default function Game() {
         </GameStateWrapper>
       </div>
     </div>
-  )
+  );
 }

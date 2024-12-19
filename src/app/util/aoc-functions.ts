@@ -6,7 +6,7 @@
  * Parses the data from the txt file into an array of number arrays.
  */
 export const parseData = (data: string) => {
-  const rows = data.trim().split("\n");
+  const rows = data.trim().split('\n');
 
   const parsedRows = rows.map((row) => {
     const numbers = row.trim().split(/\s+/).map(Number);
@@ -86,11 +86,11 @@ export const getSimilarityScore = (
  */
 const getDirection = (prev: number, current: number): string => {
   if (prev < current) {
-    return "up";
+    return 'up';
   } else if (prev > current) {
-    return "down";
+    return 'down';
   } else {
-    return "flat";
+    return 'flat';
   }
 };
 
@@ -214,7 +214,7 @@ export const multiplyEnabledNumbers = (mulStrings: string[]): number => {
   let total = 0;
 
   mulStrings.forEach((mulString) => {
-    if (mulString === "do()") {
+    if (mulString === 'do()') {
       enabled = true;
     } else if (mulString === "don't()") {
       enabled = false;
