@@ -108,16 +108,17 @@ export const isRowSafe = (row: number[]): boolean => {
   const rowDirection = getDirection(row[0], row[1]);
   for (let i = 1; i < row.length; i++) {
     const current = row[i];
-    const currentDirection = getDirection(prev, current);
 
-    // If greater than 3, entire row is unsafe
-    if (Math.abs(current - prev) > 3) {
+    // If greater than 3 or less than 1, entire row is unsafe
+    if (Math.abs(current - prev) > 3 || Math.abs(current - prev) < 1) {
       isSafe = false;
       break;
     }
 
-    // If direction changes, entire row is unsafe
-    if (rowDirection !== currentDirection) {
+    const currentDirection = getDirection(prev, current);
+
+    // If direction changes or is flat, entire row is unsafe
+    if (rowDirection !== currentDirection || currentDirection === 'flat') {
       isSafe = false;
       break;
     }
@@ -128,11 +129,19 @@ export const isRowSafe = (row: number[]): boolean => {
   return isSafe;
 };
 
+/**
+ *
+ * @param row array of numbers
+ * @returns boolean to indicate if the row is safe with a dampener
+ */
 export const isRowSafeWithDampener = (row: number[]): boolean => {
+  // If the row is already safe, return true
   if (isRowSafe(row)) {
     return true;
   }
   let isSafe = false;
+
+  // If the row is not safe, check if removing one element makes it safe
   for (let i = 0; i < row.length; i++) {
     const rowCopy = [...row];
     rowCopy.splice(i, 1);

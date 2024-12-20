@@ -9,6 +9,7 @@ import {
 } from '@/app/util/aoc-functions';
 
 export const AOC2024Day02 = () => {
+  // #1. Fetch the data - our custom hook!
   const { data, loading, error } = useAdventOfCodeData(2024, 2);
 
   if (loading) {
@@ -19,9 +20,13 @@ export const AOC2024Day02 = () => {
     return <div>{error}</div>;
   }
 
+  // #2. Parse the raw data so that we can use it
   const rows = parseData(data);
+
+  // #3. Filter the rows to find the safe ones
   const safeRows = rows.filter(isRowSafe);
 
+  // #4. Filter the rows to find the safe ones with a dampener
   const safeRowsWithDampener = rows.filter(isRowSafeWithDampener);
   return (
     <DayWrapper day={2} year={2024}>
