@@ -103,4 +103,48 @@ export const portfolioTiles: PortfolioTile[] = [
       },
     ],
   },
+  {
+    title: 'Advent of Code 2024: Day 2',
+    body: ['Day 2 challenges'],
+    visible: true,
+    links: [
+      {
+        href: 'https://coolinmc6.medium.com/advent-of-code-2024-day-2-026d4d6f55f1',
+        text: 'See the article',
+        className: LINK_STYLES.articleLink,
+      },
+      {
+        href: generateGitHubUrl('src/app/advent-of-code/2024/AOC2024Day02.tsx'),
+        text: 'See the code',
+        className: LINK_STYLES.articleLink,
+      },
+      {
+        href: 'advent-of-code/2024',
+        text: 'See the final product',
+        className: LINK_STYLES.articleLink,
+      },
+    ],
+  },
+  {
+    title: 'Advent of Code 2024: Day 3',
+    body: ['Day 3 challenges'],
+    visible: true,
+    links: [
+      {
+        href: 'https://coolinmc6.medium.com/advent-of-code-2024-day-3-b2ab1851c496',
+        text: 'See the article',
+        className: LINK_STYLES.articleLink,
+      },
+      {
+        href: generateGitHubUrl('src/app/advent-of-code/2024/AOC2024Day03.tsx'),
+        text: 'See the code',
+        className: LINK_STYLES.articleLink,
+      },
+      {
+        href: 'advent-of-code/2024',
+        text: 'See the final product',
+        className: LINK_STYLES.articleLink,
+      },
+    ],
+  },
 ];
