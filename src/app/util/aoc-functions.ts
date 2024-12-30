@@ -155,7 +155,7 @@ export const isRowSafeWithDampener = (row: number[]): boolean => {
 
 /**
  *
- * @param data string that your parsing
+ * @param data string that you're parsing
  * @param regex Regular Expression to search for
  * @returns array of string that match the regex pattern
  */
@@ -208,7 +208,7 @@ export const multiplyMulNumbers = (mulStrings: string[]): number => {
         return product;
       }
 
-      throw new Error(`Invalid mul string: ${mulString}`); // Handle unexpected cases
+      throw new Error(`Invalid mul string: ${mulString}`);
     })
     .reduce((acc, value) => acc + value, 0); // Sum the results
 };

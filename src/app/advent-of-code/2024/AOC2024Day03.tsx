@@ -10,7 +10,7 @@ import {
 import { DayWrapper } from '@/ui/aoc-components/DayWrapper';
 
 export const AOC2024Day03 = () => {
-  // https://adventofcode.com/2024/day/1
+  // #1. Fetch the data - our custom hook!
   const { data, loading, error } = useAdventOfCodeData(2024, 3);
 
   if (loading) {
@@ -21,8 +21,11 @@ export const AOC2024Day03 = () => {
     return <div>{error}</div>;
   }
 
-  // Part 1
+  // #2. Parse the raw data with Regex
   const parsedData = parseMulString(data);
+
+  // Part 1 Answer
+  // #3. Multiply the numbers and sum them
   const result = multiplyMulNumbers(parsedData);
 
   // Part 2
