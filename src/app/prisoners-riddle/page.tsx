@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import { Room, runIterations } from '@/app/article-002/prisoners-problem';
-import { Box } from '@/app/article-002/Box';
+import { Room, runIterations } from '@/app/prisoners-riddle/prisoners-problem';
+import { Box } from '@/app/prisoners-riddle/Box';
 
 export default function ArticleTwo() {
   const [room] = useState(() => new Room(100));
