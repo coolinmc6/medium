@@ -1,94 +1,28 @@
 'use client';
 
-import { useReducer } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
-import { generateValidBoard } from '../tango-helpers';
+import { useEffect, useReducer, useCallback } from 'react';
+import {
+  generateAllValidMatrices,
+  filterStringsByPattern,
+} from '../tango-helpers';
+import { CellImage } from './CellImage';
+import { boardReducer } from './reducer';
+import { initialBoard } from './helpers';
 
-type CellValue = 'S' | 'M' | '';
-type Constraint = '=' | 'x' | '' | null;
-
-interface Cell {
-  value: CellValue;
-  top: Constraint;
-  right: Constraint;
-  bottom: Constraint;
-  left: Constraint;
-}
-
-type BoardState = Cell[][];
-
-type Action =
-  | { type: 'TOGGLE_CELL'; rowIndex: number; cellIndex: number }
-  | {
-      type: 'TOGGLE_CONSTRAINT';
-      rowIndex: number;
-      cellIndex: number;
-      direction: 'top' | 'right' | 'bottom' | 'left';
-    };
-
-const createEmptyCell = (): Cell => ({
-  value: '',
-  top: '',
-  right: '',
-  bottom: '',
-  left: '',
-});
-
-const createInitialBoard = (rows: number, cols: number): BoardState => {
-  return Array.from({ length: rows }, () =>
-    Array.from({ length: cols }, createEmptyCell)
-  );
-};
-
-const initialBoard: BoardState = createInitialBoard(6, 6);
-
-const boardReducer = (state: BoardState, action: Action): BoardState => {
-  switch (action.type) {
-    case 'TOGGLE_CELL': {
-      const newState: BoardState = state.map((row, rIdx) =>
-        row.map((cell, cIdx) => {
-          if (rIdx === action.rowIndex && cIdx === action.cellIndex) {
-            const newValue =
-              cell.value === 'S' ? 'M' : cell.value === 'M' ? '' : 'S';
-            return { ...cell, value: newValue };
-          }
-          return cell;
-        })
-      );
-      console.log(newState);
-      return newState;
-    }
-    case 'TOGGLE_CONSTRAINT':
-      return state.map((row, rIdx) =>
-        row.map((cell, cIdx) => {
-          if (rIdx === action.rowIndex && cIdx === action.cellIndex) {
-            const newConstraint =
-              cell[action.direction] === '='
-                ? 'x'
-                : cell[action.direction] === 'x'
-                  ? ''
-                  : '=';
-            return { ...cell, [action.direction]: newConstraint };
-          }
-          return cell;
-        })
-      );
-    default:
-      return state;
-  }
-};
-
-const CellImage = ({ value }: { value: CellValue }) => {
-  if (value === 'S') {
-    return <FaSun className="text-yellow-500" size={20} />;
-  } else if (value === 'M') {
-    return <FaMoon className="text-blue-500" size={20} />;
-  }
-  return null;
-};
+const validBoards = generateAllValidMatrices();
 
 export default function TangoSolver() {
   const [board, dispatch] = useReducer(boardReducer, initialBoard);
+
+  const calculatePossibleBoards = useCallback(() => {
+    if (!validBoards) return;
+    if (board.join('').trim().length === 0) return;
+    const possibleBoards = filterStringsByPattern(
+      validBoards.solutionStrings,
+      board.join('')
+    );
+    console.log(possibleBoards.length);
+  }, []);
 
   const handleCellClick = (rowIndex: number, cellIndex: number) => {
     dispatch({ type: 'TOGGLE_CELL', rowIndex, cellIndex });
@@ -112,13 +46,19 @@ export default function TangoSolver() {
     }
   };
 
-  // const possibleBoards = generatePossibleBoards();
-  const randomBoard = generateValidBoard();
-  console.log(randomBoard);
+  useEffect(() => {
+    console.log(board);
+    calculatePossibleBoards();
+  }, [board]);
 
   return (
     <div className="p-4 bg-white flex-grow">
       <h1 className="text-3xl text-center">Tango Solver</h1>
+      <h2 className="text-xl text-left">Items Left to Complete</h2>
+      <ul className="mb-2 list-disc p-4">
+        <li>Show how many possible boards right now</li>
+        <li>Upon click in board, count the number of possible boards</li>
+      </ul>
       <div className="flex justify-center items-center h-full">
         <div className="grid grid-cols-6 w-[400px] h-[400px]">
           {board.map((row, rowIndex) =>
