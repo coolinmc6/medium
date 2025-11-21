@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/app/components/Header';
+import Sidebar from '@/app/components/Sidebar';
 
 export const metadata: Metadata = {
   title: 'Medium | @coolinmc6',
@@ -14,9 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-black relative">
-        <Header />
-        <main className="min-h-screen flex flex-col">{children}</main>
+      <body className="bg-gray-50 dark:bg-gray-900">
+        <Sidebar />
+        <main className="min-h-screen lg:ml-72 transition-all duration-300">
+          {children}
+        </main>
       </body>
     </html>
   );
