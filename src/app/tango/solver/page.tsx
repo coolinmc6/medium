@@ -52,7 +52,7 @@ export default function TangoSolver() {
   }, [board]);
 
   return (
-    <div className="p-4 bg-white flex-grow">
+    <div className="p-4 bg-white grow">
       <h1 className="text-3xl text-center">Tango Solver</h1>
       <h2 className="text-xl text-left">Items Left to Complete</h2>
       <ul className="mb-2 list-disc p-4">

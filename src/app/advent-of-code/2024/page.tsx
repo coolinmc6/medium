@@ -13,7 +13,7 @@ const styleObject = {
 
 export default function AdventOfCode2024() {
   return (
-    <div className="p-4 bg-white flex-grow" style={styleObject}>
+    <div className="p-4 bg-white grow" style={styleObject}>
       <div className="flex flex-col gap-y-3 items-center">
         <h1 className="text-4xl text-center mb-2 text-[#E8234D] font-bold bg-white">
           Advent of Code 2024
