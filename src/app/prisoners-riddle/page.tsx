@@ -20,7 +20,7 @@ export default function ArticleTwo() {
   console.log(stats);
 
   return (
-    <div className="p-4 bg-white flex-grow">
+    <div className="p-4 bg-white grow">
       <h1 className="text-3xl text-center">100 Prisoners Problem</h1>
       <div className="flex flex-wrap justify-center">
         {room.boxes.map((number, index) => (
