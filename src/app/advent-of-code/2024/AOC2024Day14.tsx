@@ -1,33 +1,27 @@
 import { DayWrapperWithHook } from '@/ui/aoc-components/DayWrapperWithHook';
 import { useAocDataContext } from '@/ui/aoc-components/aoc-data-context';
-import { wordSearch } from '@/app/util/aoc-utils';
-import { findXMAS } from '@/app/util/aoc-functions';
 
-const Day04Content = () => {
+const Day14Content = () => {
   const data = useAocDataContext();
-
-  const answerPart1 = wordSearch(data, 'XMAS');
-
-  const answerPart2 = findXMAS(data);
 
   return (
     <div>
       <section className="mb-2">
         <h3 className="text-xl">Part 1</h3>
-        <div>Result: {answerPart1}</div>
+        <div>NOT STARTED</div>
       </section>
       <section className="mb-2">
         <h3 className="text-xl">Part 2</h3>
-        <div>Result: {answerPart2}</div>
+        <div>NOT STARTED</div>
       </section>
     </div>
   );
 };
 
-export const AOC2024Day04 = () => {
+export const AOC2024Day14 = () => {
   return (
-    <DayWrapperWithHook day={4} year={2024}>
-      <Day04Content />
+    <DayWrapperWithHook day={14} year={2024}>
+      <Day14Content />
     </DayWrapperWithHook>
   );
 };

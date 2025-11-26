@@ -245,3 +245,57 @@ export const multiplyEnabledNumbers = (mulStrings: string[]): number => {
 
   return total;
 };
+
+export const findXMAS = (data: string): number => {
+  const rows = data.split('\n').filter((row) => row.length > 0);
+  const grid: string[][] = rows.map((row) => row.split(''));
+  const height = grid.length;
+  const width = grid[0]?.length || 0;
+
+  /**
+   * Check if position is the center 'A' of an X-MAS pattern
+   */
+  const isXMAS = (row: number, col: number): boolean => {
+    // Must be 'A' and have space for the X (not on edges)
+    if (
+      grid[row][col] !== 'A' ||
+      row < 1 ||
+      row >= height - 1 ||
+      col < 1 ||
+      col >= width - 1
+    ) {
+      return false;
+    }
+
+    // Get the four diagonal corners
+    const topLeft = grid[row - 1][col - 1];
+    const topRight = grid[row - 1][col + 1];
+    const bottomLeft = grid[row + 1][col - 1];
+    const bottomRight = grid[row + 1][col + 1];
+
+    // Check diagonal 1: top-left to bottom-right
+    // Must be either "MAS" (M at TL, S at BR) or "SAM" (S at TL, M at BR)
+    const diagonal1Valid =
+      (topLeft === 'M' && bottomRight === 'S') ||
+      (topLeft === 'S' && bottomRight === 'M');
+
+    // Check diagonal 2: top-right to bottom-left
+    // Must be either "MAS" (M at TR, S at BL) or "SAM" (S at TR, M at BL)
+    const diagonal2Valid =
+      (topRight === 'M' && bottomLeft === 'S') ||
+      (topRight === 'S' && bottomLeft === 'M');
+
+    return diagonal1Valid && diagonal2Valid;
+  };
+
+  let count = 0;
+  for (let row = 0; row < height; row++) {
+    for (let col = 0; col < width; col++) {
+      if (isXMAS(row, col)) {
+        count++;
+      }
+    }
+  }
+
+  return count;
+};
