@@ -12,6 +12,7 @@ type PortfolioTile = {
     className?: string;
   }[];
   visible: boolean;
+  order?: number;
 };
 
 const LINK_STYLES = {
@@ -53,6 +54,7 @@ export const portfolioTiles: PortfolioTile[] = [
       },
     ],
     visible: true,
+    order: 0,
   },
   {
     title:
@@ -78,6 +80,7 @@ export const portfolioTiles: PortfolioTile[] = [
       },
     ],
     visible: true,
+    order: 5,
   },
   {
     title: 'Advent of Code 2024: Project Setup and Day 1',
@@ -102,6 +105,7 @@ export const portfolioTiles: PortfolioTile[] = [
         className: LINK_STYLES.articleLink,
       },
     ],
+    order: 4,
   },
   {
     title: 'Advent of Code 2024: Day 2',
@@ -124,6 +128,7 @@ export const portfolioTiles: PortfolioTile[] = [
         className: LINK_STYLES.articleLink,
       },
     ],
+    order: 3,
   },
   {
     title: 'Advent of Code 2024: Day 3',
@@ -146,5 +151,26 @@ export const portfolioTiles: PortfolioTile[] = [
         className: LINK_STYLES.articleLink,
       },
     ],
+    order: 2,
+  },
+  {
+    title: 'Advent of Code 2025: Day 0 and Project Setup',
+    body: [
+      'Getting ready for Advent of Code 2025 with project setup and some changes in 2025.',
+    ],
+    links: [
+      {
+        href: 'https://coolinmc6.medium.com/advent-of-code-2025-day-0-and-project-setup-a7744af0d73f',
+        text: 'See the article',
+        className: LINK_STYLES.articleLink,
+      },
+      {
+        href: generateGitHubUrl('src/ui/aoc-components/DayWrapperWithHook.tsx'),
+        text: 'See the code',
+        className: LINK_STYLES.articleLink,
+      },
+    ],
+    visible: true,
+    order: 1,
   },
 ];

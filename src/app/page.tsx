@@ -8,9 +8,13 @@ export default function Home() {
   const welcomeTile = portfolioTiles.find(
     (tile) => tile.title === 'Welcome to My Portfolio'
   );
-  const articleTiles = portfolioTiles.filter(
-    (tile) => tile.visible && tile.title !== 'Welcome to My Portfolio'
-  );
+  const articleTiles = portfolioTiles
+    .filter((tile) => tile.visible && tile.title !== 'Welcome to My Portfolio')
+    .sort((a, b) => {
+      const orderA = a.order ?? Number.MAX_SAFE_INTEGER;
+      const orderB = b.order ?? Number.MAX_SAFE_INTEGER;
+      return orderA - orderB;
+    });
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
