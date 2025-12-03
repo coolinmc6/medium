@@ -103,13 +103,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 text-center">
-        <p className="text-gray-600 dark:text-gray-400">
-          Built with Next.js, React, and Tailwind CSS
-        </p>
-      </footer>
     </div>
   );
 }

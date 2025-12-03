@@ -12,14 +12,20 @@ import {
   FaChevronDown,
   FaChevronRight,
 } from 'react-icons/fa';
-import { FaMedium } from 'react-icons/fa6';
+import { FaMedium, FaSquareGithub } from 'react-icons/fa6';
+import { IoLogoVercel } from 'react-icons/io5';
 import clsx from 'clsx';
+import { portfolioTiles } from '@/app/util/constants';
 
 type NavItem = {
   label: string;
   href: string;
   icon?: React.ReactNode;
   children?: NavItem[];
+  badge?: {
+    type: 'info' | 'success' | 'warning' | 'error';
+    text: string;
+  };
 };
 
 const navigationItems: NavItem[] = [
@@ -47,6 +53,10 @@ const navigationItems: NavItem[] = [
       {
         label: '2025 Challenges',
         href: '/advent-of-code/2025',
+        badge: {
+          type: 'info',
+          text: 'New',
+        },
       },
       {
         label: '2024 Challenges',
@@ -74,7 +84,6 @@ const navigationItems: NavItem[] = [
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedSections, setExpandedSections] = useState<string[]>([
-    'Articles & Projects',
     'Advent of Code',
   ]);
   const pathname = usePathname();
@@ -135,6 +144,21 @@ const Sidebar = () => {
       );
     }
 
+    const getBadgeClasses = (type: string) => {
+      switch (type) {
+        case 'info':
+          return 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300';
+        case 'success':
+          return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+        case 'warning':
+          return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300';
+        case 'error':
+          return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300';
+        default:
+          return 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
+      }
+    };
+
     return (
       <Link
         className={clsx(
@@ -159,6 +183,16 @@ const Sidebar = () => {
           </span>
         )}
         <span className="font-medium">{item.label}</span>
+        {item.badge && (
+          <span
+            className={clsx(
+              'ml-auto px-2 py-0.5 text-xs font-semibold rounded-full',
+              getBadgeClasses(item.badge.type)
+            )}
+          >
+            {item.badge.text}
+          </span>
+        )}
       </Link>
     );
   };
@@ -214,9 +248,24 @@ const Sidebar = () => {
 
         {/* Sidebar Footer */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-          <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-            Built with Next.js & React
-          </p>
+          <div className="flex items-center justify-center gap-4">
+            {portfolioTiles[0].links.map((link, index) => (
+              <Link
+                key={index}
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                href={link.href}
+                rel="noopener noreferrer"
+                target="_blank"
+                title={link.text}
+              >
+                {link.href.includes('github.com') ? (
+                  <FaSquareGithub className="text-3xl" />
+                ) : (
+                  <IoLogoVercel className="text-3xl" />
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </aside>
     </>
