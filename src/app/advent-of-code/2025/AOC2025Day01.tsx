@@ -112,8 +112,8 @@ const Day01Content = () => {
         answerValue={zeroCount}
       >
         <p>
-          Part 1 was pretty easy but it set me up to try to just use my this
-          code for Part 2 which, on my first try, didn&apos;t work out so well.
+          Part 1 was pretty easy but it set me up to try to just use this code
+          for Part 2 which, on my first try, didn&apos;t work out so well.
         </p>
       </AOCAnswer>
 
