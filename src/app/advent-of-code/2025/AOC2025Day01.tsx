@@ -90,8 +90,6 @@ const countZeroIntersections = (rotations: string[]) => {
     // Update position to ensure it stays between 0 - 99
     // The addition "+ 100" is there for when value is negative
     pos = (pos + value + 100) % 100;
-
-    console.log(`After ${rotation}, position: ${pos}, zeroCount: ${zeroCount}`);
   });
 
   return zeroCount;
